@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters:
+  LatestAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
+Resources:
+  TerraForm-Host:
+    Type: AWS::EC2::Instance
+    Properties:
+      KeyName: security
+      DisableApiTermination: 
+      ImageId: !Ref LatestAmiId
+      InstanceType: t2.micro
+      Monitoring: false
+      UserData: !Base64 |
+        #!/bin/bash -xe
+        yum update -y
+        curl iac.sh/terraform | sh
+      Tags:
+        - Key: Name
+          Value: TerraForm-Host
