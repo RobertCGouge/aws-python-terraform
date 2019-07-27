@@ -15,6 +15,7 @@ data "aws_ami" "al2" {
         values = ["hvm"]
     }
 
+    owners = "amazon"
 }
 resource "aws_instance" "web" {
     ami           = "${data.aws_ami.al2.id}"
