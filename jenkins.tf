@@ -3,7 +3,7 @@ provider "aws" {
     alias = "Jenkins"
 }
 
-data "aws_ami" "al2" {
+data "aws_ami" "al2jenkins" {
     most_recent = true
 
     filter {
@@ -19,7 +19,7 @@ data "aws_ami" "al2" {
     owners = ["amazon"]
 }
 resource "aws_instance" "Jenkins" {
-    ami           = "${data.aws_ami.al2.id}"
+    ami           = "${data.aws_ami.al2jenkins.id}"
     instance_type = "t2.micro"
     key_name = "securitylaptop"
     user_data = <<-EOF
