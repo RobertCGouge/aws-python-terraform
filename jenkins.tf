@@ -1,6 +1,7 @@
 provider "aws" {
     profile = "default"
     alias = "Jenkins"
+    region = "us-east-1"
 }
 
 data "aws_ami" "al2jenkins" {

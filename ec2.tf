@@ -1,6 +1,7 @@
 provider "aws" {
     profile = "default"
     alias = "ec2"
+    region = "us-east-1"
 }
 
 data "aws_ami" "al2ec2" {
