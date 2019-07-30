@@ -1,5 +1,6 @@
 provider "aws" {
     profile = "default"
+    alias = "Jenkins"
 }
 
 data "aws_ami" "al2" {

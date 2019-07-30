@@ -1,5 +1,6 @@
 provider "aws" {
     profile = "default"
+    alias = "ec2"
 }
 
 data "aws_ami" "al2" {
