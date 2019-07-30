@@ -21,7 +21,6 @@ resource "aws_instance" "web" {
     ami           = "${data.aws_ami.al2.id}"
     instance_type = "t2.micro"
     key_name = "securitylaptop"
-    security_groups = ["sg-0bd282b5ab2b0b672"]
 
     tags = {
         Name = "Terraform Guest"
