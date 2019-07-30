@@ -1,0 +1,6 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources: 
+  TerraformStack:
+Type: "AWS::CloudFormation::Stack"
+Properties: 
+  TemplateURL: "https://devgougetechs32019-07-26.s3.amazonaws.com/terraform_host.yml"

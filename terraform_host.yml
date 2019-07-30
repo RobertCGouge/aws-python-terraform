@@ -4,18 +4,20 @@ Parameters:
     Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
     Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
 Resources:
-  TerraForm-Host:
+  TerraFormHost:
     Type: AWS::EC2::Instance
     Properties:
-      KeyName: security
-      DisableApiTermination: 
+      KeyName: securitylaptop
       ImageId: !Ref LatestAmiId
+      SecurityGroupIds:
+        - sg-0bd282b5ab2b0b672
       InstanceType: t2.micro
       Monitoring: false
       UserData: !Base64 |
         #!/bin/bash -xe
         yum update -y
         curl iac.sh/terraform | sh
+        terraform -install-autocomplete
       Tags:
         - Key: Name
           Value: TerraForm-Host
